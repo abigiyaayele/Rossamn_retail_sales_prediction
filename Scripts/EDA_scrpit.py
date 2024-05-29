@@ -6,6 +6,10 @@ import matplotlib.pyplot as plt
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
 import logging
+from sklearn.pipeline import Pipeline
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import FunctionTransformer
+from sklearn.base import BaseEstimator, TransformerMixin
 
 # Initialize logger
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -17,25 +21,48 @@ def load_data(train_path, test_path, store_path):
     store = pd.read_csv(store_path)
     return train, test, store
 
-# Data cleaning: Handling missing values
-def handle_missing_values(df):
-    imputer = SimpleImputer(strategy='median')
-    df['CompetitionDistance'] = imputer.fit_transform(df[['CompetitionDistance']])
-    df['CompetitionOpenSinceMonth'] = df['CompetitionOpenSinceMonth'].fillna(0)
-    df['CompetitionOpenSinceYear'] = df['CompetitionOpenSinceYear'].fillna(0)
-    df['Promo2SinceWeek'] = df['Promo2SinceWeek'].fillna(0)
-    df['Promo2SinceYear'] = df['Promo2SinceYear'].fillna(0)
-    df['PromoInterval'] = df['PromoInterval'].fillna(0)
-    return df
+class OutlierRemover(BaseEstimator, TransformerMixin):
+    def __init__(self, target_column):
+        self.target_column = target_column
+        
+    def fit(self, X, y=None):
+        return self
+    
+    def transform(self, X):
+        Q1 = X[self.target_column].quantile(0.25)
+        Q3 = X[self.target_column].quantile(0.75)
+        IQR = Q3 - Q1
+        return X[(X[self.target_column] >= (Q1 - 1.5 * IQR)) & (X[self.target_column] <= (Q3 + 1.5 * IQR))]
 
-# Data cleaning: Detect and handle outliers
-def handle_outliers(df):
-    # Example: Removing outliers in sales using IQR method
-    Q1 = df['Sales'].quantile(0.25)
-    Q3 = df['Sales'].quantile(0.75)
-    IQR = Q3 - Q1
-    df = df[(df['Sales'] >= (Q1 - 1.5 * IQR)) & (df['Sales'] <= (Q3 + 1.5 * IQR))]
-    return df
+def build_data_pipeline():
+    numeric_features = ['CompetitionDistance', 'CompetitionOpenSinceMonth', 'CompetitionOpenSinceYear', 
+                        'Promo2SinceWeek', 'Promo2SinceYear']
+    
+    categorical_features = ['PromoInterval']
+    
+    numeric_transformer = Pipeline(steps=[
+        ('imputer', SimpleImputer(strategy='median')),
+        ('scaler', StandardScaler())
+    ])
+    
+    categorical_transformer = Pipeline(steps=[
+        ('imputer', SimpleImputer(strategy='constant', fill_value='missing')),
+    ])
+    
+    outlier_remover = OutlierRemover(target_column='Sales')
+    
+    preprocessor = ColumnTransformer(
+        transformers=[
+            ('num', numeric_transformer, numeric_features),
+            ('cat', categorical_transformer, categorical_features)
+        ])
+    
+    data_pipeline = Pipeline(steps=[
+        ('outlier_remover', outlier_remover),
+        ('preprocessor', preprocessor)
+    ])
+    
+    return data_pipeline
 
 # Exploratory Data Analysis: Distribution Analysis
 def compare_promo_distribution(train, test):
@@ -108,9 +135,9 @@ def main():
     test = pd.merge(test, store, on='Store')
 
     # Data Cleaning
-    train = handle_missing_values(train)
-    train = handle_outliers(train)
-
+     #Data Cleaning using pipeline
+    data_pipeline = build_data_pipeline()
+    train_cleaned = data_pipeline.fit_transform(train)
     # EDA
     compare_promo_distribution(train, test)
     sales_during_holidays(train)
