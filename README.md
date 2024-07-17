@@ -67,7 +67,7 @@ Rossamn_retail_sales_prediction/
     pip install -r requirements.txt
     ```
 
-## approach
+## Approaches
 
 ###  1: Exploration of Customer Purchasing Behavior
 - Data Cleaning
@@ -79,16 +79,16 @@ Rossamn_retail_sales_prediction/
 ## Deliverables
 
 1. **Exploratory Analysis Notebook**:
-- A comprehensive notebook answering the exploratory questions with visualizations and insights.
+   - A comprehensive notebook answering the exploratory questions with visualizations and insights.
 
 2. **Machine Learning Model**:
-- Serialized sklearn model with feature importance analysis and confidence intervals.
+   - Serialized sklearn model with feature importance analysis and confidence intervals.
 
 4. **Deep Learning Model**:
-- LSTM regression model trained on time series data.
+  - LSTM regression model trained on time series data.
 
 5. **Web Interface**:
-- An interface for serving the predictions to the finance team.
+  - An interface for serving the predictions to the finance team.
 
 
-## author:[Abigiya Ayele].
+## Author: Abigiya Ayele.
