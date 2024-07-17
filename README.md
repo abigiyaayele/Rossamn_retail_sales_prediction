@@ -14,23 +14,21 @@ The finance team at Rossmann Pharmaceuticals currently relies on store managers'
 
 ## approach
 ###  1: Exploration of Customer Purchasing Behavior
-      -  Data Cleaning
+      - Data Cleaning
 1. **Handling Missing Values**
 2. **Outlier Detection**
       - Exploratory Data Analysis (EDA)
 
 ### 2: Prediction of Store Sales
-     -  Preprocessing
+     - Preprocessing
 
 1. **Feature Engineering**:
 2. **Scaling**:
-
    - Model Building with Sklearn Pipelines
 
 
 ###  3: Building Model with Deep Learning
-
-     -  LSTM Regression Model
+     - LSTM Regression Model
 
 1. **Data Preparation**:
    - Isolate the dataset into time series data and check for stationarity.
@@ -70,8 +68,8 @@ The repository has a number of files including python scripts, jupyter notebooks
 
 ### Installation guide
 
-git clone https://github.com/abigiyaayele/Rossamn_retail_sales_prediction.git
-cd Rossamn_retail_sales_prediction
-pip install -r requirements.txt
+   -   git clone https://github.com/abigiyaayele/Rossamn_retail_sales_prediction.git
+   -   cd Rossamn_retail_sales_prediction
+   -   pip install -r requirements.txt
 
 # author:[Abigiya Ayele].
