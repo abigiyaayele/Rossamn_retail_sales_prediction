@@ -1,10 +1,6 @@
-# Rossamn_retail_sales_prediction
-10 academy week 5 project
-## Project Summary
+# Rossmann Pharmaceuticals Sales Forecasting
 
-Sales Forecasting System for Rossmann Pharmaceuticals
-
-### Overview
+## Overview
 
 This project aims to build an end-to-end system for predicting daily sales in Rossmann Pharmaceuticals stores across several cities, six weeks ahead of time. The goal is to provide the finance team with accurate forecasts to help in better planning and decision-making. The solution involves both traditional machine learning and deep learning approaches, ensuring robust and scalable predictions.
 
@@ -25,8 +21,8 @@ The dataset consists of various features, including:
 - Holiday and competition information (StateHoliday, SchoolHoliday, CompetitionDistance, CompetitionOpenSince, PromoInterval)
 - Seasonality: Monthly and yearly patterns in sales.
 
-### Task 1: Exploration of Customer Purchasing Behavior
-
+## approach
+###  1: Exploration of Customer Purchasing Behavior
 #### Data Cleaning
 
 1. **Handling Missing Values**: Identify and fill missing values, especially in `CompetitionDistance`, `CompetitionOpenSince`, `Promo2Since`, and `PromoInterval`.
