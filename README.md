@@ -12,81 +12,25 @@ Rossmann Pharmaceuticals operates multiple stores across different cities. The f
 
 The finance team at Rossmann Pharmaceuticals currently relies on store managers' experience and judgment to forecast sales. The need for a more systematic and data-driven approach is evident, as accurate sales predictions can significantly impact inventory management, staffing, and promotional strategies.
 
-### Data and Features
-
-The dataset consists of various features, including:
-- Store details (Store ID, StoreType, Assortment)
-- Sales and customer data (Sales, Customers)
-- Indicators for store operations (Open, Promo, Promo2)
-- Holiday and competition information (StateHoliday, SchoolHoliday, CompetitionDistance, CompetitionOpenSince, PromoInterval)
-- Seasonality: Monthly and yearly patterns in sales.
-
 ## approach
 ###  1: Exploration of Customer Purchasing Behavior
-#### Data Cleaning
+      -  Data Cleaning
+1. **Handling Missing Values**
+2. **Outlier Detection**
+      - Exploratory Data Analysis (EDA)
 
-1. **Handling Missing Values**: Identify and fill missing values, especially in `CompetitionDistance`, `CompetitionOpenSince`, `Promo2Since`, and `PromoInterval`.
-2. **Outlier Detection**: Use statistical methods and visualizations to detect and handle outliers.
-
-#### Exploratory Data Analysis (EDA)
-
-1. **Distribution Analysis**:
-   - Compare the distribution of promotions between training and test sets.
-   - Visualize sales behavior before, during, and after holidays to identify patterns.
-
-2. **Seasonal Purchase Behavior**:
-   - Analyze sales during Christmas, Easter, and other significant holidays.
-
-3. **Correlation Analysis**:
-   - Examine the correlation between sales and the number of customers.
-   - Analyze how promotions affect sales and customer numbers.
-
-4. **Promo Effectiveness**:
-   - Determine the effectiveness of different types of promotions.
-   - Identify stores where promotions are most beneficial.
-
-5. **Operational Trends**:
-   - Explore customer behavior during store opening and closing times.
-   - Analyze the impact of store operating days on weekend sales.
-
-6. **Assortment and Competition**:
-   - Investigate how different assortment types affect sales.
-   - Study the impact of the distance to the nearest competitor on sales.
-
-#### Visualizations
-
-Use plots such as histograms, box plots, scatter plots, and time series plots to visualize the findings from the above analyses.
-
-### Task 2: Prediction of Store Sales
-
-#### Preprocessing
+### 2: Prediction of Store Sales
+     -  Preprocessing
 
 1. **Feature Engineering**:
-   - Extract new features from date columns (e.g., weekdays, weekends, days to holidays).
-   - Create additional features to capture monthly trends (e.g., beginning, mid, end of the month).
-
 2. **Scaling**:
-   - Apply standard scaling to normalize the features.
 
-#### Model Building with Sklearn Pipelines
+   - Model Building with Sklearn Pipelines
 
-1. **Algorithm Selection**:
-   - Start with tree-based algorithms like Random Forest Regressor for initial modeling.
-   - Use sklearn pipelines for modular and reproducible modeling.
 
-2. **Loss Function**:
-   - Choose and justify an appropriate loss function for the regression problem (e.g., Mean Absolute Error for interpretability).
+###  3: Building Model with Deep Learning
 
-3. **Post Prediction Analysis**:
-   - Analyze feature importance to understand the model's decision-making process.
-   - Estimate the confidence interval of the predictions for better reliability.
-
-4. **Model Serialization**:
-   - Save the trained models with timestamps to track and manage different versions.
-
-### Task 3: Building Model with Deep Learning
-
-#### LSTM Regression Model
+     -  LSTM Regression Model
 
 1. **Data Preparation**:
    - Isolate the dataset into time series data and check for stationarity.
@@ -98,21 +42,6 @@ Use plots such as histograms, box plots, scatter plots, and time series plots to
 3. **Model Building**:
    - Use TensorFlow or PyTorch to build a two-layer LSTM model for sales prediction.
    - Train the model on the prepared time series data.
-
-### Conclusion
-
-By following the outlined steps, we aim to deliver a robust and scalable sales prediction system for Rossmann Pharmaceuticals. This system will enable the finance team to make informed decisions based on accurate forecasts, ultimately improving the company's operational efficiency and profitability.
-
-### Next Steps
-
-1. **Deploy the Model**:
-   - Serve the model predictions via a web interface accessible to analysts in the finance team.
-
-2. **Monitor and Update**:
-   - Continuously monitor the model's performance and update it regularly with new data.
-
-3. **Extend Analysis**:
-   - Further explore additional features and refine the models for even better accuracy.
 
 ### Deliverables
 
@@ -127,6 +56,22 @@ By following the outlined steps, we aim to deliver a robust and scalable sales p
 
 4. **Web Interface**:
    - An interface for serving the predictions to the finance team.
+ 
+### Project Structure
+The repository has a number of files including python scripts, jupyter notebooks, pdfs and text files. Here is their structure with a brief explanation.
 
+**data:**
+- the folder where the dataset files are stored
+**notebooks:**
+- different jupyter notebooks
+**root folder:**
+- .gitignore: a text file listing files and folders to be ignored
+- README.md: Markdown text with a brief explanation of the project and the repository structure.
+
+### Installation guide
+
+git clone https://github.com/abigiyaayele/Rossamn_retail_sales_prediction.git
+cd Rossamn_retail_sales_prediction
+pip install -r requirements.txt
 
 # author:[Abigiya Ayele].
