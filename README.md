@@ -70,25 +70,25 @@ Rossamn_retail_sales_prediction/
 ## approach
 
 ###  1: Exploration of Customer Purchasing Behavior
-      - Data Cleaning
-      - Exploratory Data Analysis (EDA)
+- Data Cleaning
+- Exploratory Data Analysis (EDA)
 ###  2: Prediction of Store Sales
-      - Model Building with Sklearn Pipelines
+- Model Building with Sklearn Pipelines
 ###  3: Building Model with Deep Learning
-     - LSTM Regression Model
+- LSTM Regression Model
 ## Deliverables
 
 1. **Exploratory Analysis Notebook**:
-   - A comprehensive notebook answering the exploratory questions with visualizations and insights.
+- A comprehensive notebook answering the exploratory questions with visualizations and insights.
 
 2. **Machine Learning Model**:
-   - Serialized sklearn model with feature importance analysis and confidence intervals.
+- Serialized sklearn model with feature importance analysis and confidence intervals.
 
-3. **Deep Learning Model**:
-   - LSTM regression model trained on time series data.
+4. **Deep Learning Model**:
+- LSTM regression model trained on time series data.
 
-4. **Web Interface**:
-   - An interface for serving the predictions to the finance team.
+5. **Web Interface**:
+- An interface for serving the predictions to the finance team.
 
 
 ## author:[Abigiya Ayele].
