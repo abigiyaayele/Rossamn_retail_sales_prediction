@@ -40,9 +40,7 @@ def prediction(Open, DayOfWeek, Promo, Sales):
         DayOfWeek = 7
     else:
         print("Wrong Input!!!!!")
-        
-    
-
+  
     # Making predictions 
     prediction = ideal_model1.predict( 
         [[Open, DayOfWeek, Promo]])
@@ -53,16 +51,13 @@ def prediction(Open, DayOfWeek, Promo, Sales):
         pred = 'Approved'
     return pred
     
-    
-    
-  
 # this is the main function in which we define our webpage  
 def main():       
     # front end elements of the web page 
    
     # display the front end aspect
     st.markdown('Streamlit Sales Prediction ML App', unsafe_allow_html = True) #any HTML tags found in the body will be escaped and therefore treated as pure text. This behavior may be turned off by setting this argument to True. 
-      
+
     # following lines create boxes in which user can enter data required to make prediction 
     Open = st.selectbox('Open',("Yes","No"))
     Promo = st.selectbox('Promo',("0","1")) 
