@@ -48,11 +48,7 @@ Rossamn_retail_sales_prediction/
 
 - Python
 - PostgreSQL
-- SQLAlchemy
 - python notebook
-- TensorFlow
-- PyTorch
-
 
 ## Setup and Installation
 
